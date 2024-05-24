@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WC-PIA</string>
+    <string name="cargar_imagen">Cargar imagen</string>
+    <string name="guardar">Guardar</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="nombres">Nombre(s)</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="correo">Correo</string>
+    <string name="usuario">Usuario</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+</resources>

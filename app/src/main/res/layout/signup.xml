@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".SignUpActivity">
+
+    <EditText
+        android:id="@+id/etUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/usuario"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etNombres"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/nombres"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etApellidos"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/apellidos"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/correo"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/contrasena"
+        android:inputType="textPassword" />
+
+    <ImageView
+        android:id="@+id/ivImagen"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:contentDescription="Imagen seleccionada"
+        android:background="@android:color/darker_gray"
+        android:scaleType="centerCrop" />
+
+    <Button
+        android:id="@+id/btnCargarImagen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cargar_imagen"  />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/guardar" />
+</LinearLayout>
