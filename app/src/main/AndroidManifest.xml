@@ -28,6 +28,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".HomeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.WCPIA" />
+
     </application>
 
 </manifest>
