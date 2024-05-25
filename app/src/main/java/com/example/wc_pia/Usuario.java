@@ -15,11 +15,20 @@ public class Usuario {
     public String apellidos;
     public String correo;
     public String contrasena;
-    public String imagenPath;
+    public String imagenPath;  // Campo para la ruta de la imagen de perfil
     @TypeConverters({Converters.class})
     public Date fechaCreacion;
 
     public Usuario() {
-        this.fechaCreacion = new Date();  // Establecer la fecha de creación en el momento de instanciar el objeto
+        this.fechaCreacion = new Date();
+    }
+
+    // Agregar getters y setters para imagenPath
+    public String getImagenPath() {
+        return imagenPath;
+    }
+
+    public void setImagenPath(String imagenPath) {
+        this.imagenPath = imagenPath;
     }
 }

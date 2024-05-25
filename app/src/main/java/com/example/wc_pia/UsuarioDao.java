@@ -26,4 +26,10 @@ public interface UsuarioDao {
 
     @Query("SELECT * FROM usuarios WHERE correo = :correo AND contrasena = :contrasena LIMIT 1")
     Usuario findByCorreoAndContrasena(String correo, String contrasena);
+
+    @Query("SELECT * FROM usuarios WHERE correo = :correo LIMIT 1")
+    Usuario findUsuarioByCorreo(String correo);
+
 }
+
+

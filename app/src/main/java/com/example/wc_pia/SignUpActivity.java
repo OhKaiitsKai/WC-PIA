@@ -49,9 +49,12 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void openGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.setType("image/*");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(intent, PICK_IMAGE);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -61,6 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
             ivImagen.setImageURI(imageUri);
         }
     }
+
 
     private void saveUser() {
         String usuario = etUsuario.getText().toString();
@@ -75,20 +79,26 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-        Usuario user = new Usuario();
-        user.usuario = usuario;
-        user.nombres = nombres;
-        user.apellidos = apellidos;
-        user.correo = correo;
-        user.contrasena = contrasena;
-        user.imagenPath = imagenPath;
-        user.fechaCreacion = new Date();
-
         new Thread(() -> {
-            db.usuarioDao().insert(user);
-            runOnUiThread(() -> Toast.makeText(SignUpActivity.this, "Usuario guardado", Toast.LENGTH_SHORT).show());
+            Usuario existingUser = db.usuarioDao().findUsuarioByCorreo(correo);
+            if (existingUser != null) {
+                runOnUiThread(() -> Toast.makeText(SignUpActivity.this, "El usuario ya existe", Toast.LENGTH_SHORT).show());
+            } else {
+                Usuario user = new Usuario();
+                user.usuario = usuario;
+                user.nombres = nombres;
+                user.apellidos = apellidos;
+                user.correo = correo;
+                user.contrasena = contrasena;
+                user.imagenPath = imagenPath;
+                user.fechaCreacion = new Date();
+
+                db.usuarioDao().insert(user);
+                runOnUiThread(() -> Toast.makeText(SignUpActivity.this, "Usuario guardado", Toast.LENGTH_SHORT).show());
+            }
         }).start();
     }
+
 
     private String saveImageToInternalStorage() {
         if (imageUri == null) return null;
@@ -107,5 +117,6 @@ public class SignUpActivity extends AppCompatActivity {
             return null;
         }
     }
+
 }
 

@@ -8,7 +8,7 @@
     <EditText
         android:id="@+id/etCorreo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_margin="16dp"
         android:hint="Correo electrónico"
         android:inputType="textEmailAddress" />
@@ -16,7 +16,7 @@
     <EditText
         android:id="@+id/etContrasena"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_margin="16dp"
         android:layout_below="@id/etCorreo"
         android:hint="Contraseña"
