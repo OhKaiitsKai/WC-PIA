@@ -55,7 +55,6 @@ public class SignUpActivity extends AppCompatActivity {
         startActivityForResult(intent, PICK_IMAGE);
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -64,7 +63,6 @@ public class SignUpActivity extends AppCompatActivity {
             ivImagen.setImageURI(imageUri);
         }
     }
-
 
     private void saveUser() {
         String usuario = etUsuario.getText().toString();
@@ -94,11 +92,15 @@ public class SignUpActivity extends AppCompatActivity {
                 user.fechaCreacion = new Date();
 
                 db.usuarioDao().insert(user);
-                runOnUiThread(() -> Toast.makeText(SignUpActivity.this, "Usuario guardado", Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> {
+                    Toast.makeText(SignUpActivity.this, "Usuario guardado", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish(); // Finaliza SignUpActivity para que el usuario no pueda volver con el botón atrás
+                });
             }
         }).start();
     }
-
 
     private String saveImageToInternalStorage() {
         if (imageUri == null) return null;
@@ -117,6 +119,5 @@ public class SignUpActivity extends AppCompatActivity {
             return null;
         }
     }
-
 }
 
